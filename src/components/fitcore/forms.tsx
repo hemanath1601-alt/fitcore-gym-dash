@@ -1,0 +1,17 @@
+import { useState, type FormEvent, type ReactNode } from "react"
+import { Plus, ReceiptText, UserPlus } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+
+export function ActionDialog({type="member",onSaved}:{type?:"member"|"payment"|"trainer"|"plan";onSaved?:(message:string)=>void}){
+ const [open,setOpen]=useState(false)
+ const content={member:{label:"Add member",title:"New member",description:"Create a membership profile.",icon:UserPlus},payment:{label:"Record payment",title:"Record payment",description:"Add a payment to the member ledger.",icon:ReceiptText},trainer:{label:"Add trainer",title:"New trainer",description:"Create a trainer profile and assign a shift.",icon:UserPlus},plan:{label:"New plan",title:"Create membership plan",description:"Define duration, price, and benefits.",icon:Plus}}[type]
+ const Icon=content.icon
+ function submit(e:FormEvent){e.preventDefault();setOpen(false);onSaved?.(`${content.title} saved to this demo session.`)}
+ return <Dialog open={open} onOpenChange={setOpen}><DialogTrigger asChild><Button className="rounded-xl"><Icon/>{content.label}</Button></DialogTrigger><DialogContent className="glass-panel max-h-[90vh] overflow-y-auto rounded-2xl border-border"><DialogHeader><DialogTitle className="font-display text-xl">{content.title}</DialogTitle><DialogDescription>{content.description}</DialogDescription></DialogHeader><form onSubmit={submit} className="space-y-4"><div className="grid gap-4 sm:grid-cols-2">{type!=="payment"&&<Field label={type==="plan"?"Plan name":"Full name"} placeholder={type==="plan"?"e.g. Weekend Flex":"Enter full name"}/>} {type!=="plan"&&<Field label={type==="payment"?"Member ID":"Phone number"} placeholder={type==="payment"?"FC-1042":"+91 98765 43210"}/>}<Field label={type==="payment"||type==="plan"?"Amount":"Email address"} placeholder={type==="payment"||type==="plan"?"₹ 0":"name@example.com"}/><div className="space-y-2"><Label>{type==="trainer"?"Shift":type==="plan"?"Duration":"Membership plan"}</Label><Select defaultValue="standard"><SelectTrigger className="h-10 rounded-xl bg-secondary/60"><SelectValue/></SelectTrigger><SelectContent><SelectItem value="standard">{type==="trainer"?"Morning · 06:00–14:00":type==="plan"?"30 days":"Annual Pro"}</SelectItem><SelectItem value="alternate">{type==="trainer"?"Evening · 14:00–22:00":type==="plan"?"180 days":"6-Month"}</SelectItem></SelectContent></Select></div></div><DialogFooter><Button type="button" variant="outline" onClick={()=>setOpen(false)}>Cancel</Button><Button type="submit">Save</Button></DialogFooter></form></DialogContent></Dialog>
+}
+function Field({label,placeholder}:{label:string;placeholder:string}){return <div className="space-y-2"><Label>{label}</Label><Input required placeholder={placeholder} className="h-10 rounded-xl bg-secondary/60"/></div>}
+export function Notice({children}:{children:ReactNode}){return <div role="status" className="rounded-xl border border-success/20 bg-success/10 px-4 py-3 text-sm text-success">{children}</div>}

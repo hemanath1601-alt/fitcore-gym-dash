@@ -10,33 +10,154 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AttendanceRouteImport } from './routes/attendance'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as MemberSearchRouteImport } from './routes/member-search'
+import { Route as MembersRouteImport } from './routes/members'
+import { Route as PaymentHistoryRouteImport } from './routes/payment-history'
+import { Route as PaymentsRouteImport } from './routes/payments'
+import { Route as PendingFeesRouteImport } from './routes/pending-fees'
+import { Route as PlansRouteImport } from './routes/plans'
+import { Route as TrainersRouteImport } from './routes/trainers'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AttendanceRoute = AttendanceRouteImport.update({
+  id: '/attendance',
+  path: '/attendance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MemberSearchRoute = MemberSearchRouteImport.update({
+  id: '/member-search',
+  path: '/member-search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MembersRoute = MembersRouteImport.update({
+  id: '/members',
+  path: '/members',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaymentHistoryRoute = PaymentHistoryRouteImport.update({
+  id: '/payment-history',
+  path: '/payment-history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaymentsRoute = PaymentsRouteImport.update({
+  id: '/payments',
+  path: '/payments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PendingFeesRoute = PendingFeesRouteImport.update({
+  id: '/pending-fees',
+  path: '/pending-fees',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlansRoute = PlansRouteImport.update({
+  id: '/plans',
+  path: '/plans',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrainersRoute = TrainersRouteImport.update({
+  id: '/trainers',
+  path: '/trainers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/attendance': typeof AttendanceRoute
+  '/login': typeof LoginRoute
+  '/member-search': typeof MemberSearchRoute
+  '/members': typeof MembersRoute
+  '/payment-history': typeof PaymentHistoryRoute
+  '/payments': typeof PaymentsRoute
+  '/pending-fees': typeof PendingFeesRoute
+  '/plans': typeof PlansRoute
+  '/trainers': typeof TrainersRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/attendance': typeof AttendanceRoute
+  '/login': typeof LoginRoute
+  '/member-search': typeof MemberSearchRoute
+  '/members': typeof MembersRoute
+  '/payment-history': typeof PaymentHistoryRoute
+  '/payments': typeof PaymentsRoute
+  '/pending-fees': typeof PendingFeesRoute
+  '/plans': typeof PlansRoute
+  '/trainers': typeof TrainersRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/attendance': typeof AttendanceRoute
+  '/login': typeof LoginRoute
+  '/member-search': typeof MemberSearchRoute
+  '/members': typeof MembersRoute
+  '/payment-history': typeof PaymentHistoryRoute
+  '/payments': typeof PaymentsRoute
+  '/pending-fees': typeof PendingFeesRoute
+  '/plans': typeof PlansRoute
+  '/trainers': typeof TrainersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/attendance'
+    | '/login'
+    | '/member-search'
+    | '/members'
+    | '/payment-history'
+    | '/payments'
+    | '/pending-fees'
+    | '/plans'
+    | '/trainers'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/attendance'
+    | '/login'
+    | '/member-search'
+    | '/members'
+    | '/payment-history'
+    | '/payments'
+    | '/pending-fees'
+    | '/plans'
+    | '/trainers'
+  id:
+    | '__root__'
+    | '/'
+    | '/attendance'
+    | '/login'
+    | '/member-search'
+    | '/members'
+    | '/payment-history'
+    | '/payments'
+    | '/pending-fees'
+    | '/plans'
+    | '/trainers'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AttendanceRoute: typeof AttendanceRoute
+  LoginRoute: typeof LoginRoute
+  MemberSearchRoute: typeof MemberSearchRoute
+  MembersRoute: typeof MembersRoute
+  PaymentHistoryRoute: typeof PaymentHistoryRoute
+  PaymentsRoute: typeof PaymentsRoute
+  PendingFeesRoute: typeof PendingFeesRoute
+  PlansRoute: typeof PlansRoute
+  TrainersRoute: typeof TrainersRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +169,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/attendance': {
+      id: '/attendance'
+      path: '/attendance'
+      fullPath: '/attendance'
+      preLoaderRoute: typeof AttendanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/member-search': {
+      id: '/member-search'
+      path: '/member-search'
+      fullPath: '/member-search'
+      preLoaderRoute: typeof MemberSearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/members': {
+      id: '/members'
+      path: '/members'
+      fullPath: '/members'
+      preLoaderRoute: typeof MembersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payment-history': {
+      id: '/payment-history'
+      path: '/payment-history'
+      fullPath: '/payment-history'
+      preLoaderRoute: typeof PaymentHistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payments': {
+      id: '/payments'
+      path: '/payments'
+      fullPath: '/payments'
+      preLoaderRoute: typeof PaymentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pending-fees': {
+      id: '/pending-fees'
+      path: '/pending-fees'
+      fullPath: '/pending-fees'
+      preLoaderRoute: typeof PendingFeesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/plans': {
+      id: '/plans'
+      path: '/plans'
+      fullPath: '/plans'
+      preLoaderRoute: typeof PlansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trainers': {
+      id: '/trainers'
+      path: '/trainers'
+      fullPath: '/trainers'
+      preLoaderRoute: typeof TrainersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AttendanceRoute: AttendanceRoute,
+  LoginRoute: LoginRoute,
+  MemberSearchRoute: MemberSearchRoute,
+  MembersRoute: MembersRoute,
+  PaymentHistoryRoute: PaymentHistoryRoute,
+  PaymentsRoute: PaymentsRoute,
+  PendingFeesRoute: PendingFeesRoute,
+  PlansRoute: PlansRoute,
+  TrainersRoute: TrainersRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
